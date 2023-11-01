@@ -43,10 +43,10 @@ class Queue{
         if (tail == null) {
             tail = newNode;
             head = tail;
+        } else {
+            tail.next = newNode;
+            tail = tail.next;
         }
-
-        tail.next = newNode;
-        tail = tail.next;
     }
 
     public Integer dequeue(){
