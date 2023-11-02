@@ -1,0 +1,44 @@
+public class Main {
+
+    public static void main(String[] args) {
+        //creating a singly linked list
+        SinglyLinkedListNode<Integer> headEven = new SinglyLinkedListNode<>(1);
+        SinglyLinkedListNode<Integer> currEven = headEven;
+        for (int i = 2; i < 5; i++){
+            currEven.next = new SinglyLinkedListNode<>(i);
+            currEven = currEven.next;
+        }
+
+        SinglyLinkedListNode<Integer> headOdd = new SinglyLinkedListNode<>(1);
+        SinglyLinkedListNode<Integer> currOdd = headOdd;
+        for (int i = 2; i < 6; i++){
+            currOdd.next = new SinglyLinkedListNode<>(i);
+            currOdd = currOdd.next;
+        }
+
+        System.out.println(middleNode(headEven).data);
+        System.out.println(middleNode(headOdd).data);
+    }
+
+    public static SinglyLinkedListNode<Integer> middleNode(SinglyLinkedListNode<Integer> head){
+        SinglyLinkedListNode<Integer> slow = head;
+        SinglyLinkedListNode<Integer> fast = head;
+
+        while (fast != null && fast.next != null){
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+
+        return slow;
+    }
+}
+
+class SinglyLinkedListNode<E>{
+    public E data;
+    public SinglyLinkedListNode<E> next;
+
+    public SinglyLinkedListNode(E data){
+        this.data = data;
+    }
+}
+
