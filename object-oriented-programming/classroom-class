@@ -14,11 +14,23 @@ public class Main {
                 new Student("AC-340018","Leta", "Ferguson", 7)
         },  "English", "Daniel Pherb");
 
-        System.out.println(classroom1.getClassIdentity());
-        System.out.println(classroom1.getNumberOfStudents());
+        Classroom[] classrooms = new Classroom[]{classroom1, classroom2};
+        printAllStudents(classrooms);
+    }
 
-        System.out.println(classroom2.getClassIdentity());
-        System.out.println(classroom2.getNumberOfStudents());
+    public static void printAllStudents(Classroom[] classrooms){
+
+        StringBuilder string = new StringBuilder();
+
+        for (Classroom classroom: classrooms){
+            Student[] students = classroom.students;
+
+            for (Student student: students){
+                string.append(student.getStudentInfo() + ", ");
+            }
+        }
+
+        System.out.println(string.substring(0, string.length() - 2));
     }
 }
 
@@ -36,7 +48,7 @@ class Student{
     }
 
     public String getStudentInfo(){
-        return studentId + ": " + firstName + lastName + "(" + gradeLevel + ")";
+        return studentId + ": " + firstName + " " + lastName + "(" + gradeLevel + ")";
     }
 }
 
