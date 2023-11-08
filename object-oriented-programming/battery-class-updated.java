@@ -13,6 +13,12 @@ public class Main {
         // creating deep-copy of mc96
         Battery deepMc96 = new Battery("VTec", "MC96", 14.4, 6.6, 0.55, 72, 97, 51.5);
 
+        System.out.println(mc96 == shallowMc96);  // true
+        System.out.println(mc96 == deepMc96);  // false
+        System.out.println(shallowMc96 == deepMc96);  //false
+
+        System.out.println();
+
         System.out.println(mc96.isEquals(shallowMc96)); // true
         System.out.println(mc96.isEquals(deepMc96));  // true
         System.out.println(mc96.isEquals(mc60));  //false
