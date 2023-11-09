@@ -5,4 +5,4 @@ Instance variables are unique to the specific instance (object) in a class. When
 
 ## Class Variables  
 Class variables are shared within a class, among all instances in that class. If you update a class variable, all instances in the class will be affected. Class variables should be declared with the "static" keyword and will be accessed by "Class-name.variable-name".  
-By defining class variables with the "final" keyword, in addition to the static keyword, you will not be able to change class variables. This helps prevent any side effects.
+By defining class variables with the "final" keyword, in addition to the static keyword, you will not be able to change class variables. This helps prevent any side effects. 
