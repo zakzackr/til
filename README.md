@@ -1,2 +1,2 @@
 # til
-Today I Learned. This repository is a collection of what I learned today.
+Today I Learned. This repository is a collection of what I learned today. The files I upload include Java code and some explanations of what I learned today in the field of Computer Science as Markdown files.
