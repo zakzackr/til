@@ -30,6 +30,7 @@ class RGB24Immutable{
     private int green;
     private int blue;
 
+    // Once an object is created, its state remains constant throughout its lifetime.
     public RGB24Immutable(int red, int green, int blue){
         this.red = red;
         this.green = green;
@@ -44,6 +45,7 @@ class RGB24Immutable{
         else setAsBlack();
     }
 
+    // These mutator methods are only accessible from constructors, and not accessible from other methods inside/outside of this class. 
     private void setColorsByBin(String bin){
         if (bin.length() != 24) setAsBlack();
         red = Integer.parseInt(bin.substring(0, 8), 2);
