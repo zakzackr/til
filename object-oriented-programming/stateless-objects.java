@@ -8,7 +8,6 @@ public class Main {
 }
 
 class MathThings{
-    // 
     public static final double PI = 3.14159265359;
 
     // this method is accessible from anywhere in the application since it is declared with static keyword
