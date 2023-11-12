@@ -26,9 +26,9 @@ public class Main {
 }
 
 class RGB24Immutable{
-    public int red;
-    public int green;
-    public int blue;
+    private int red;
+    private int green;
+    private int blue;
 
     public RGB24Immutable(int red, int green, int blue){
         this.red = red;
