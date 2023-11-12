@@ -26,6 +26,7 @@ public class Main {
 }
 
 class RGB24Immutable{
+    //All of the member variables are private.
     private int red;
     private int green;
     private int blue;
