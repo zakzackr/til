@@ -14,6 +14,7 @@ public class Main {
     }
 }
 
+// HAS-A relationship between Person class and Wallet class. A person has a Wallet.
 class Wallet{
     private int bill1;
     private int bill5;
@@ -71,7 +72,7 @@ class Person {
         this.age = age;
 
 
-        // When a person object is created, the person's wallet will be created.
+        // When a person object is created, the person's wallet will be also created.
         // However, the wallet object can remain after the person object is deleted.
         this.wallet = new Wallet();
     }
