@@ -4,7 +4,7 @@ Composition is a strong type of “HAS-A” relationship because the containing 
 The objects’ lifecycles are tied, which means that if we delete the owner (Person) object, its members (BMI/Name objects) also will be deleted with it.   
 
 
-What distinguishes composition from aggregation, that it does involve owning. 
+What distinguishes composition from aggregation, is that composition does involve owning. 
     
 ref: https://www.baeldung.com/java-composition-aggregation-association
 
