@@ -1,3 +1,6 @@
+// This is an example of aggregation.
+// A Person HAS-A Wallet and the wallet can exist after the person is deleted.
+
 public class Main {
   
     public static void main(String[] args) {
