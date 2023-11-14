@@ -1,11 +1,11 @@
 ## Association
 There are two types of 'Association'.   
     
-### 1. HAS-A Association
-There are two kinds of HAS-A associations. 'Aggregation' and 'Composition'.  
+### HAS-A Association
+There are two kinds of HAS-A associations, which are 'Aggregation' and 'Composition'.  
 Association > Aggregation (weak Association) > Composition (strong Association)
     
-### 2. IS-A Association
+### IS-A Association
 The IS-A Association is 'Inheritance'.
     
     
