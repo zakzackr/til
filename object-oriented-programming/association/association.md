@@ -1,5 +1,5 @@
 ## Association
-Association is a relationship between two classes. There are two types of Association.   
+Association（関連） is a relationship between two classes. There are two types of Association.   
     
 ### HAS-A Association
 There are two kinds of HAS-A associations, which are 'Aggregation' and 'Composition'.  
