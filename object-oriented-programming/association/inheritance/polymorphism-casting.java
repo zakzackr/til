@@ -1,0 +1,291 @@
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
+public class Main {
+    public static void animalPolymorphism(Animal animal){
+        System.out.println(animal);
+        animal.move();
+        System.out.println(animal.isHungry());
+
+        // ERROR!!
+//        animal.study();
+
+        if (animal instanceof Person) ((Person) animal).study();
+    }
+
+    public static void main(String[] args) {
+        Animal dog = new Animal("dog", 30, 25, 3000, "male");
+        Mammal dogM = new Mammal("dog", 20, 15, 4000, "female", 5, "dog", 39.0);
+        Person p1 = new Person(1.81, 67, "male", 36.5, "Ryu", "Suzuki");
+        animalPolymorphism(dog);
+        animalPolymorphism(dogM);
+        animalPolymorphism(p1);
+
+        Field world = new Field();
+        world.randomlyAddWithDependency(dog);
+        world.randomlyAddWithDependency(dogM);
+        world.randomlyAddWithDependency(p1);
+
+        System.out.println(world);
+
+        // p2 is defined as Animal
+        // -> Now, only accessible to methods in Animal class
+        // ** BUT, if methods in Animal class are overridden in Person/Mammal class, the overridden methods will be called
+        // because p2 refers to an instance of Person class
+        Animal p2 = new Person(1.61, 45, "female", 36.5, "Anna", "Sato");
+        p2.move();
+        System.out.println(p2);
+
+        // ERROR!!
+        // ** Animal objects do not have study method, so this causes an error
+//        p2.study();
+
+        if (p2 instanceof Person) ((Person) p2).study();
+    }
+}
+
+class BMI{
+    private double heightM;
+    private double weightKg;
+
+    public BMI(double heightM, double weightKg){
+        this.heightM = heightM;
+        this.weightKg = weightKg;
+    }
+
+    public double getValue(){
+        return weightKg / (heightM * heightM);
+    }
+
+    public String toString(){
+        return this.heightM + " meters, " + this.weightKg + "kg, BMI:" + this.getValue();
+    }
+}
+
+class Animal{
+    protected String species;
+    protected BMI bmi;
+    protected double lifeSpanDays;
+    protected String biologicalSex;
+    protected Date spawnTime;
+    protected Date deathTime;
+    protected int hungerPercent = 100;
+    protected int sleepPercent = 100;
+
+    public Animal(String species, double heightM, double weightKg, double lifeSpanDays, String biologicalSex){
+        this.species = species;
+        this.bmi = new BMI(heightM, weightKg);
+        this.lifeSpanDays = lifeSpanDays;
+        this.biologicalSex = biologicalSex;
+        this.spawnTime = new Date();
+    }
+
+    public void eat(){
+        if (!isAlive()) return;
+        hungerPercent = 0;
+    }
+
+    public void sleep(){
+        if (!isAlive()) return;
+        sleepPercent = 0;
+    }
+
+
+    public void setAsHungry(){
+        if (!isAlive()) return;
+        hungerPercent = 100;
+    }
+
+    public boolean isHungry(){
+        return hungerPercent >= 70;
+    }
+
+    public void setAsSleepy(){
+        if (!isAlive()) return;
+        sleepPercent = 0;
+    }
+
+    public boolean isSleepy(){
+        return sleepPercent >= 70;
+    }
+
+    public void die(){
+        hungerPercent = 0;
+        sleepPercent = 0;
+        deathTime = new Date();
+    }
+
+    public boolean isAlive(){
+        return deathTime == null;
+    }
+
+    public void move(){
+        if (!isAlive()) return;
+        System.out.println("The animal is moving...");
+    }
+
+    public String toString(){
+        return this.species + this.bmi + " lives " + this.lifeSpanDays + " days/" + "gender:" + this.biologicalSex + "." + this.status();
+    }
+
+    public String status(){
+        return this.species + " status:" + " Hunger - " + this.hungerPercent + "%, " + "sleepiness:"+this.sleepPercent + "%" + ", Alive - " + this.isAlive() + ". First created at " + this.dateCreated();
+    }
+
+    public String dateCreated(){
+        return new SimpleDateFormat("yyyy/mm/dd HH:mm:ss").format(spawnTime);
+    }
+}
+
+class Mammal extends Animal{
+    private double furLengthCm;
+    private String furType;
+    private double bodyTemperatureC;
+    private double avgBodyTemperatureC;
+    private boolean mammaryGland = false;
+    private boolean sweatGland = true;
+    private boolean isPregnant = false;
+
+    public Mammal(String species, double heightM, double weightKg, double lifeSpanDays, String biologicalSex, double furLengthCm, String furType, double avgBodyTemperatureC){
+        super(species, heightM, weightKg, lifeSpanDays, biologicalSex);
+
+        this.furLengthCm = furLengthCm;
+        this.furType = furType;
+        this.mammaryGland = (biologicalSex == "female");
+        this.bodyTemperatureC = avgBodyTemperatureC;
+        this.avgBodyTemperatureC = avgBodyTemperatureC;
+    }
+
+    public void sweat(){
+        if (!isAlive()) return;
+        if(sweatGland) System.out.print("Sweating....");
+
+        bodyTemperatureC -= 0.3;
+        System.out.println("Body temperature is now " + bodyTemperatureC + "C");
+    }
+
+    public void produceMilk(){
+        if (!isAlive()) return;
+        if (isPregnant && mammaryGland) System.out.println("Producing milk...");
+        else System.out.println("Cannot produce milk");
+    }
+
+    // override
+    public void move(){
+        if (!isAlive()) return;
+        System.out.println(species + " is moving!!");
+    }
+
+    public void fertalize(){
+        if(!isAlive()) return;
+
+        isPregnant = true;
+    }
+
+    public void mate(Mammal mammal){
+        if (!isAlive()) return;
+        if (species == mammal.species) return;
+
+        if (biologicalSex == "female" && mammal.biologicalSex == "male") fertalize();
+        else if (biologicalSex == "male" && mammal.biologicalSex == "female") mammal.fertalize();
+    }
+
+    public String toString(){
+        return "This is a mammal. " +  super.toString();
+    }
+}
+
+class Name{
+    private String firstName;
+    private String lastName;
+
+    public Name(String firstName, String lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public String getFullName(){
+        return firstName + " " + lastName;
+    }
+}
+
+class Person extends Mammal{
+    private Name name;
+
+    public Person(double heightM,
+                  double weightKg,
+                  String biologicalSex,
+                  double avgBodyTemperatureC,
+                  String firstName,
+                  String lastName){
+        super("human", heightM, weightKg, 30000, biologicalSex, 1.0, "human", avgBodyTemperatureC);
+
+        this.name = new Name(firstName, lastName);
+    }
+
+    public void exercise(){
+        System.out.println(name.getFullName() + " is exercising!!");
+    }
+
+    public void study(){
+        System.out.println(name.getFullName() + " is studying!!");
+    }
+
+    public String toString(){
+        return "This is a human. " + super.toString();
+    }
+}
+
+class Coordinate{
+    public int x;
+    public int y;
+    public int z;
+
+    public Coordinate(int x, int y, int z){
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+
+    public String toString(){
+        return "{x:"+x+",y:"+y+",z:"+z+"}";
+    }
+}
+
+class Field{
+    private static final int MAX_X = 100000;
+    private static final int MAX_Y = 40000;
+    private static final int MAX_Z = 1000;
+
+    private ArrayList<Animal> creatures;
+    private ArrayList<Coordinate> creatureCoordinates;
+
+    public Field(){
+        this.creatures = new ArrayList<Animal>();
+        this.creatureCoordinates = new ArrayList<Coordinate>();
+    }
+
+    
+    // will be able to give subclass(Mammal/Person) of the Animal class as a parameter
+    public void randomlyAddWithDependency(Animal creature){
+        Coordinate c = new Coordinate(internalRanAlgorithm(1, Field.MAX_X), internalRanAlgorithm(1, Field.MAX_Y), internalRanAlgorithm(1, Field.MAX_Z));
+
+        creatures.add(creature);
+        creatureCoordinates.add(c);
+    }
+
+    private int internalRanAlgorithm(int min, int max){
+        return (int) (Math.random() * (max - min) + min);
+    }
+
+    public String toString(){
+        StringBuffer s = new StringBuffer("");
+        for(int i = 0; i < creatures.size(); i++){
+            s.append(creatures.get(i) + " with coordinates: " + creatureCoordinates.get(i) + "\n");
+        }
+        return s.toString();
+    }
+}
+
+
