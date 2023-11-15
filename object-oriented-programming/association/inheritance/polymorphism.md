@@ -2,7 +2,6 @@
 
 ## Example
 ```
-
 public class Main{
     public static void main(String[] args){
         Animal a1 = new Animal();
@@ -14,7 +13,7 @@ public class Main{
         p1.move();  // The Person is moving
 
         // ERROR
-//        p1.study();
+        // p1.study();
 
         // casting
         if (p1 instanceof Animal) ((Person) p1).study();  // The Person is studying!!
