@@ -16,7 +16,7 @@ public class Main {
     }
 }
 
-// Player class is dependant on Monster class
+// Player class is dependent on Monster class
 class Player{
     private String username;
     private int health;
