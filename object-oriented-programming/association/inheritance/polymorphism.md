@@ -1,6 +1,7 @@
 ## Polymorphism
 
 ## Example
+```
 public class Main{
   public static void main(String[] args){
     Animal a1 = new Animal();
@@ -40,3 +41,4 @@ class Person extends Mammal{
     System.out.println("The Person is studying!!");
   }
 }
+```
