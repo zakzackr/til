@@ -4,7 +4,7 @@
 ```
 public class Main{
     public static void main(String[] args){
-        // a1, m1, and p1 are only accessible to methods defined in the Animal class.
+        // a1, m1, and p1 are Animal types, only accessible to methods defined in the Animal class.
         Animal a1 = new Animal();
         Animal m1 = new Mammal();
         Animal p1 = new Person();
@@ -15,7 +15,7 @@ public class Main{
 
         // ERROR!!
         // The study method is defined in the Person class, so only person objects can call the method.
-        // In this case, p1 is an Animal object, not a Person object.
+        // In this case, p1 is Animal type, not Person type.
         // p1.study();
 
         // Casting
