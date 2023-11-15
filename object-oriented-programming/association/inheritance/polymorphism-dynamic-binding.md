@@ -25,6 +25,16 @@ public class Main{
         polyMethod(a1);  // The Animal is moving
         polyMethod(m1);  // The Mammal is moving
         polyMethod(p1);  // The Person is moving,  The Person is studying!!
+
+
+        // a2: Animal type, m2: Mammal type, p2: Person type.
+        Animal a2 = new Animal();
+        Mammal m2 = new Mammal();
+        Person p2 = new Person();
+
+        polyMethod(a2);  // The Animal is moving
+        polyMethod(m2);  // The Mammal is moving
+        polyMethod(p2);  // The Person is moving,  The Person is studying!!
     }
 
     public static void polyMethod(Animal animal){
