@@ -10,7 +10,7 @@ public class Main{
         Animal p1 = new Person();
 
         a1.move();  // The Animal is moving
-        m1.move();  // The Mammal is moving
+        m1.move();  // The Animal is moving
         p1.move();  // The Person is moving
 
         // ERROR
@@ -19,6 +19,14 @@ public class Main{
         // casting
         if (p1 instanceof Animal) ((Person) p1).study();  // The Person is studying!!
 
+        polyMethod(a1);  // The Animal is moving
+        polyMethod(m1);  // The Animal is moving
+        polyMethod(p1);  // The Person is moving,  The Person is studying!!
+    }
+
+    public static void polyMethod(Animal animal){
+        animal.move();
+        if (animal instanceof Person) ((Person) animal).study();
     }
 }
 
@@ -29,14 +37,12 @@ class Animal{
 }
 
 class Mammal extends Animal{
-    // override
     public void move(){
         System.out.println("The Mammal is moving");
     }
 }
 
 class Person extends Mammal{
-    // override
     public void move(){
         System.out.println("The Person is moving");
     }
