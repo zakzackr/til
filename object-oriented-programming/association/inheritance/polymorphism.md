@@ -10,7 +10,7 @@ public class Main{
         Animal p1 = new Person();
 
         a1.move();  // The Animal is moving
-        m1.move();  // The Animal is moving
+        m1.move();  // The Mammal is moving
         p1.move();  // The Person is moving
 
         // ERROR
@@ -20,7 +20,7 @@ public class Main{
         if (p1 instanceof Animal) ((Person) p1).study();  // The Person is studying!!
 
         polyMethod(a1);  // The Animal is moving
-        polyMethod(m1);  // The Animal is moving
+        polyMethod(m1);  // The Mammal is moving
         polyMethod(p1);  // The Person is moving,  The Person is studying!!
     }
 
