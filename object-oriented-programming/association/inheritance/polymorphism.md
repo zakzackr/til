@@ -4,6 +4,7 @@
 ```
 public class Main{
     public static void main(String[] args){
+        // a1, m1, and p1 are only accessible to methods defined in the Animal class.
         Animal a1 = new Animal();
         Animal m1 = new Mammal();
         Animal p1 = new Person();
@@ -28,12 +29,14 @@ class Animal{
 }
 
 class Mammal extends Animal{
+    // override
     public void move(){
         System.out.println("The Mammal is moving");
     }
 }
 
 class Person extends Mammal{
+    // override
     public void move(){
         System.out.println("The Person is moving");
     }
