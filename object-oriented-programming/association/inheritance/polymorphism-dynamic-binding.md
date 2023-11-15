@@ -4,10 +4,11 @@
 ```
 public class Main{
     public static void main(String[] args){
+
         // a1, m1, and p1 are Animal types, only accessible to methods defined in the Animal class.
         Animal a1 = new Animal();
-        Animal m1 = new Mammal();
-        Animal p1 = new Person();
+        Animal m1 = new Mammal();  // assigning a Mammal class object to parent class reference. 
+        Animal p1 = new Person();  // assigning a Person class object to parent class reference. 
 
         a1.move();  // The Animal is moving
         m1.move();  // The Mammal is moving
