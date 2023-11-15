@@ -1,4 +1,4 @@
-## Polymorphism
+## Polymorphism and Dynamic Binding
 
 ## Example
 ```
