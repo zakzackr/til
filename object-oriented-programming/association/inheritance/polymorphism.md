@@ -13,10 +13,12 @@ public class Main{
         m1.move();  // The Mammal is moving
         p1.move();  // The Person is moving
 
-        // ERROR
+        // ERROR!!
+        // The study method is defined in the Person class, so only person objects can call the method.
+        // In this case, p1 is an Animal object, not a Person object.
         // p1.study();
 
-        // casting
+        // Casting
         if (p1 instanceof Animal) ((Person) p1).study();  // The Person is studying!!
 
         polyMethod(a1);  // The Animal is moving
