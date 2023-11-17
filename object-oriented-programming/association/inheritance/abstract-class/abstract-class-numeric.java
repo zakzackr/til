@@ -5,7 +5,6 @@ public class Main {
         Numeric num3 = new CharNumeric('a');
         Numeric num4 = new IntegerNumeric(127);
 
-
         numericPrinter(num1);
         numericPrinter(num2);
         numericPrinter(num3);
