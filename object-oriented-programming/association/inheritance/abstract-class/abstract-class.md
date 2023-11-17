@@ -28,12 +28,13 @@ public class Main{
 
 // declaring an abstract class with abstract keyword
 abstract class Shape2D{
+    // providing default values to instance variables
     protected double scale = 1;
     protected String borderColor = "black";
     protected String backgroundColor = "white";
     protected Date createdTime;
 
-    // possible to call this constructor from a subclass using super()
+    // possible to declare a constructor that should be called from a subclass using super()
     public Shape2D(){
         this.createdTime = new Date();
     }
