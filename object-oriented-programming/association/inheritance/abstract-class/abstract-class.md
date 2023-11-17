@@ -33,6 +33,7 @@ abstract class Shape2D{
     protected String backgroundColor = "white";
     protected Date createdTime;
 
+    // possible to call this constructor from a subclass using super()
     public Shape2D(){
         this.createdTime = new Date();
     }
@@ -61,6 +62,7 @@ class Square extends Shape2D{
         this.l = l;
     }
 
+    // implementing abstract methods that are specific to Square objects.
     public String getDescription(){
         return "This is a square";
     }
@@ -84,6 +86,7 @@ class Rectangle extends Shape2D{
         this.h = h;
     }
 
+    // implementing abstract methods that are specific to Rectangle objects.
     public String getDescription(){
         return "This is a rectangle";
     }
