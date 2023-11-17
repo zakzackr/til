@@ -29,30 +29,6 @@ abstract class Shape2D{
         this.createdTime = new Date();
     }
 
-    public double getScale(){
-        return this.scale;
-    }
-
-    public void setScale(double scale){
-        this.scale = scale;
-    }
-
-    public String getBorderColor(){
-        return this.borderColor;
-    }
-
-    public void setBorderColor(String borderColor){
-        this.borderColor = borderColor;
-    }
-
-    public String getBackgroundColor(){
-        return this.backgroundColor;
-    }
-
-    public void setBackgroundColor(String backgroundColor){
-        this.backgroundColor = backgroundColor;
-    }
-
     public String getDateCreated(){
         return new SimpleDateFormat("yyyy/mm/dd HH:mm:ss").format(createdTime);
     }
