@@ -1,5 +1,12 @@
 ## Abstract Class
+An abstract class is declared with an abstract keyword and cannot be instantiated (it must be inherited from another class). It may have both abstract and non-abstract methods. An abstract method does not have a body, so it should be provided by the subclass(concrete class).
 
+### Basic rules
+1. declare with abstract keyword
+2. cannot create an instance from an abstract class (Note: it is possible to declare a constructor in an abstract class, but it should be called from its subclass(concrete class) using super())
+3. abstract methods in an abstract class should be implemented in concrete classes.
+
+## Example
 ```
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,6 +26,7 @@ public class Main{
     }
 }
 
+// declaring an abstract class with abstract keyword
 abstract class Shape2D{
     protected double scale = 1;
     protected String borderColor = "black";
@@ -37,6 +45,9 @@ abstract class Shape2D{
         return getDescription() + ", created at " + getDateCreated();
     }
 
+    // area and perimeter differ from each shape and they should be implemented in concrete classes(Square and Rectangle classes)
+    // declaring abstract methods with abstract keyword
+    // these methods should be implemented in their subclass (concrete class)
     public abstract String getDescription();
     public abstract double getArea();
     public abstract double getPerimeter();
