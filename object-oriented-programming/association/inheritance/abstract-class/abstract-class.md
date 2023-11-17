@@ -16,6 +16,7 @@ public class Main{
         Shape2D square = new Square(5);
         Shape2D rectangle = new Rectangle(5, 10);
 
+        // polymorphism
         shapePrinter(square);
         shapePrinter(rectangle);
     }
