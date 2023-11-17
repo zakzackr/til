@@ -1,7 +1,7 @@
 ## Abstract Class
 An abstract class is declared with an abstract keyword and cannot be instantiated (it must be inherited from another class). It may have both abstract and non-abstract methods. An abstract method does not have a body, so it should be implemented in the subclass(concrete class).
 
-### Basic rules
+### Basic Rules
 1. Declare with abstract keyword.
 2. Cannot create an instance from an abstract class. (Note: it is possible to declare a constructor in an abstract class, but it should be called from its subclass(concrete class) using super().)
 4. Abstract methods in an abstract class should be implemented in concrete classes.
