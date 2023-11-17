@@ -55,6 +55,7 @@ abstract class Shape2D{
     public abstract double getPerimeter();
 }
 
+// Concrete class
 class Square extends Shape2D{
     private double l;
 
@@ -77,6 +78,7 @@ class Square extends Shape2D{
     }
 }
 
+// Concrete class
 class Rectangle extends Shape2D{
     private double l;
     private double h;
