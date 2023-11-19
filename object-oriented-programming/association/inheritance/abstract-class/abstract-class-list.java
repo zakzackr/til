@@ -142,6 +142,7 @@ class IntegerArrayList extends AbstractListInteger{
         }
     }
 
+    // Polymorphism
     public AbstractListInteger subList(int start){
         List<Integer> newDArr = dArr.subList(start, dArr.size());
         return new IntegerArrayList(toIntArr(newDArr));
@@ -245,7 +246,7 @@ class IntegerLinkedList extends AbstractListInteger{
 
     public void addAt(int position, int element){
         if (tail == at(position)) {
-            add(element);  // for now, not considering the case when the position is the last node...
+            add(element); 
             return;
         }
 
@@ -260,7 +261,7 @@ class IntegerLinkedList extends AbstractListInteger{
 
     public void addAt(int position, int[] elements){
         if (tail == at(position)) {
-            add(elements);  // for now, not considering the case when the position is the last node...
+            add(elements);  
             return;
         }
 
@@ -320,6 +321,7 @@ class IntegerLinkedList extends AbstractListInteger{
         endNode.prev = startNode;
     }
 
+    // Polymorphism
     public AbstractListInteger subList(int start){
         Node current = at(start);
         ArrayList<Integer> subList = new ArrayList<>();
