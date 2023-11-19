@@ -28,6 +28,8 @@ public class Main {
         printList(list1);
         AbstractListInteger list2 = list.subList(0,5);
         printList(list2);
+
+        System.out.println(list.getOriginalList()[0]);
     }
 
     public static void printList(AbstractListInteger list){
@@ -190,6 +192,8 @@ class IntegerLinkedList extends AbstractListInteger{
     };
 
     public IntegerLinkedList(int[] arr){
+        super(arr);
+
         if (arr.length == 0) return;
         this.head = new Node(arr[0]);
 
@@ -246,7 +250,7 @@ class IntegerLinkedList extends AbstractListInteger{
 
     public void addAt(int position, int element){
         if (tail == at(position)) {
-            add(element); 
+            add(element);  
             return;
         }
 
