@@ -1,7 +1,7 @@
 ## Interface
 Interfaces enable abstraction.  
     
-### Basic Rule
+### Basic Rules
 1. Interface can only have abstract methods. (Abstract class can have concrete methods and member variables in addition to abstract methods.)
 2. A class that implements an interface has to implement abstract methods defined in the interface.
 3. A class can implements multiple interfaces.  
