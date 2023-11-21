@@ -6,6 +6,8 @@ public class Main {
         DequeInt dequeOdd = new IntegerLinkedList(new int[]{1, 2, 3, 4, 5, 6, 7});
         AbstractListInteger list = new IntegerLinkedList(new int[]{1, 2, 3, 4, 5, 6});
 
+        System.out.println(list.getOriginalList()[0]);  // 1
+
         stackPrint(stack);  // [6 5 4 3 2 1 ]
 //        stackPrint(list); // [6 5 4 3 2 1 ]
         queuePrint(queue);  // [1 2 3 4 5 6 ]
