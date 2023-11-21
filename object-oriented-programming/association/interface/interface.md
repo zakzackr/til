@@ -4,7 +4,7 @@ Interfaces enable abstraction.
 ### Basic Rules
 1. Interface can only have abstract methods. (Abstract class can have concrete methods and member variables in addition to abstract methods.)
 2. A class that implements an interface has to implement abstract methods defined in the interface.
-3. A class can implements multiple interfaces.  
+3. A class can implement multiple interfaces.  
     
 ### Interface and Polymorphism
 When Person class implements Audible interface, Person class must implements all of the abstract methods defined in the interface. Person objects can be defined as Audible type.
