@@ -17,7 +17,10 @@ interface QueueInt{
 }
 
 // can extend multiple interfaces
+// will inherit all of the abstract methods from StackInt and QueueInt interfaces
 interface DequeInt extends StackInt, QueueInt{
+
+    // defining a abstract method unique to DequeInt
     public abstract void addFirst(int element);
 }
 
