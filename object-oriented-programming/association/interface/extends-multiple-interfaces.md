@@ -2,7 +2,7 @@
 An interface can extend any number of interfaces, unlike a class, which can extend only one other class.
 
 ### Example
-ref: 
+ref: object-oriented-programming/association/interface/data-structure-interfaces.java
 ```
 interface StackInt{
     public abstract Integer peekLast();
