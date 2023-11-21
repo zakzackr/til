@@ -4,8 +4,9 @@ An abstract class is declared with an abstract keyword and cannot be instantiate
 ### Basic Rules
 1. Declare with abstract keyword.
 2. Cannot create an instance from an abstract class.
-3. It is possible to declare a constructor in an abstract class, but it should be called from its subclass(concrete class) using super(). Can define member variables in an abstract class and give their default values. (recommended to declare member variables with the protected keyword as a subclass can access them)
-4. Abstract methods in an abstract class should be implemented in concrete classes.
+3. It is possible to declare a constructor in an abstract class, but it should be called from its subclass(concrete class) using super().
+4. Can define member variables in an abstract class and give their default values. (recommended to declare member variables with the protected keyword as a subclass can access them)
+5. Abstract methods in an abstract class should be implemented in concrete classes.
    
 
 ## Example
