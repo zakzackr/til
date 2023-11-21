@@ -83,7 +83,7 @@ interface DequeInt extends StackInt, QueueInt{
     public abstract void addFirst(int element);
 }
 
-// ** cannot create an instance directly from this abstract class but still can define constructors in an abstract class. 
+// ** cannot create an instance directly from an abstract class but still can define constructors in an abstract class. 
 // ** a constructor of an abstract class can be called from its subclass using super().
 abstract class AbstractListInteger implements DequeInt{
     protected int[] initialArr;
