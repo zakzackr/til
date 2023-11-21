@@ -1,5 +1,5 @@
 ## Extends multiple interfaces
-An interface can extend any number of interfaces, unlike a class, which can extend only one other class.
+An interface can extend any number of interfaces, unlike a class, which can extend only one other class. So, the child interface inherits the abstract methods of the parent interface.
 
 ### Example
 ref: object-oriented-programming/association/interface/data-structure-interfaces.java
