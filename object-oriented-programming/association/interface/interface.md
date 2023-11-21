@@ -23,6 +23,8 @@ public class Main {
     // p1 can be passed to this method as it is defined as Audible type
     // p2 can be also passed to this method as Person class implements Audible interface.
     public static void makeSound(Audible audibleObj){
+        // can only implement methods from Audible interface
+        // cannot call methods specific to Person class
         audibleObj.makeSound();
     }
 }
