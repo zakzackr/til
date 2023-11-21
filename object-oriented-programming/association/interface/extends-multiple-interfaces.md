@@ -26,7 +26,7 @@ interface DequeInt extends StackInt, QueueInt{
 
 abstract class AbstractListInteger implements DequeInt{ ... }
 
-// implementing all of the abstract methods in the abstract class and interfaces above
+// this class implements all of the abstract methods in the abstract class and interfaces above
 // a class can extend only one other class
 class IntegerLinkedList extends AbstractListInteger{ ... }
 ```
