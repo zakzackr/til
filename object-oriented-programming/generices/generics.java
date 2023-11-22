@@ -12,7 +12,9 @@ public class Main {
         stackInt.push(2);
         stackInt.push(1);
         System.out.println(stackInt);  // [1 2 3 4 5]
+        System.out.println(stackInt.pop() * stackInt.pop());  // 2
 
+        
         StackGenerics<String> stackStr = new StackGenerics(new String[]{"apple", "banana", "cherry"});
         System.out.println(stackStr);  // [apple banana cherry]
         System.out.println(stackStr.pop());  // apple
@@ -20,9 +22,8 @@ public class Main {
         System.out.println(stackStr);  // [cherry]
         stackStr.push("water melon");
         System.out.println(stackStr);  // [water melon cherry]
-        
-        
-        // ERROR!! 
+
+        // ERROR!!
 //        StackGenerics<String> stackMixedTypes = new StackGenerics();
 //        stackMixedTypes.push("apple");
 //        stackMixedTypes.push(1);
