@@ -13,15 +13,17 @@ public class Main {
         integerArrList.removeAllAt(5);
         integerArrList.printList();  // 2 3 4 5 6
 
+        System.out.println(integerArrList.getOriginalList()[0]);  // 1
+
         GenericAbstractList list1 = integerArrList.subList(0, 3);
-        list1.printList();  // 2 3 4 
+        list1.printList();  // 2 3 4
         GenericAbstractList list2 = integerArrList.subList(3);
         list2.printList();  // 5 6
     }
 }
 
 abstract class GenericAbstractList<E>{
-    private E[] initialList;
+    protected E[] initialList;
 
     public GenericAbstractList(){}
 
@@ -131,4 +133,3 @@ class GenericsArrayList<E> extends GenericAbstractList<E>{
         System.out.println();
     }
 }
-
