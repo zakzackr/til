@@ -43,8 +43,8 @@ public class Main {
     }
 }
 
-// E - Element (used extensively by the Java Collections Framework)
-// K - Key
+// E - Element (used extensively by the Java Collections Framework, e.g. ArrayList, Set etc.)
+// K - Key (Used in Map)
 
 interface Stack<K, E>{
     public abstract E peekBack();
