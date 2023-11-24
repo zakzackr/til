@@ -3,34 +3,42 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-        LRUCache<String> c = new LRUCache<String>(10);
-        c.put(0, "Hello");
-        c.put(4, "Good Morning");
-        c.put(1, "Good Afternoon");
-        c.put(7, "Good Evening");
-        c.put(4, "GoodBye");
-        System.out.println(c.get(0));
-        System.out.println(c.cacheList);
+        LRUCache<String> cache = new LRUCache<>(5);
+        cache.put(1, "apple");
+        cache.put(2, "berry");
+        cache.put(3, "cherry");
+        cache.put(4, "dragon fruit");
+        cache.put(5, "egg fruit");
+
+        System.out.println(cache);  // [<1, apple><2, berry><3, cherry><4, dragon fruit><5, egg fruit>]
+
+        System.out.println(cache.get(2));  // berry
+
+        cache.put(6, "fruity fruit");
+        System.out.println(cache.get(1));  // null
+        System.out.println(cache.get(6));  // fruity fruit
+
+        System.out.println(cache);  // [<3, cherry><4, dragon fruit><5, egg fruit><2, berry><6, fruity fruit>]
     }
 }
 
 interface Stack<E>{
     public abstract E peekBack();
-    public abstract E popBack();
     public abstract void pushBack(Node<E> node);
+    public abstract E popBack();
 }
 
 interface Queue<E>{
-    public abstract E peekFront();
-    public abstract E popFront();
+    public abstract E peekFirst();
     public abstract void pushBack(Node<E> node);
+    public abstract E popFirst();
 }
 
 class Node<E>{
     public int key;
     public E data;
-    public Node<E> prev;
     public Node<E> next;
+    public Node<E> prev;
 
     public Node(int key, E data){
         this.key = key;
@@ -42,64 +50,67 @@ abstract class AbstractDoublyLinkedList<E> implements Stack<E>, Queue<E>{
     protected Node<E> head;
     protected Node<E> tail;
 
-    public AbstractDoublyLinkedList(){}
+    public AbstractDoublyLinkedList(){};
 
     public abstract void deleteNode(Node<E> node);
 }
 
-// 両方向リスト
+// 先頭から末尾に向かって、徐々に新しいデータになる
 class CacheList<E> extends AbstractDoublyLinkedList<E>{
     public CacheList(){
         super();
     }
+
 
     public E peekBack(){
         if (tail == null) return null;
         return tail.data;
     }
 
-    public E popBack(){
-        if (tail == null) return null;
-
-        Node<E> temp = tail;
-        tail = tail.prev;
-        if (tail != null) tail.next = null;
-        else head = null;
-
-        return temp.data;
-    }
-
+    // 一番新しいデータをキャッシュに追加
     public void pushBack(Node<E> node){
-        if (head == null){
+        if (tail == null){
+            tail = node;
             head = node;
-            tail = head;
-        } else{
-            node.prev = tail;
+        } else {
             tail.next = node;
+            node.prev = tail;
             tail = tail.next;
         }
     }
 
-    public E peekFront(){
+    public E popBack(){
+        if (tail == null) return null;
+
+        Node<E> deleted = tail;
+        tail = tail.prev;
+        if (tail == null) head = null;
+        else tail.next = null;
+
+        return deleted.data;
+    }
+
+    public E peekFirst(){
         if (head == null) return null;
         return head.data;
     }
 
-    public E popFront(){
+    // 一番古いデータをキャッシュから削除
+    public E popFirst(){
         if (head == null) return null;
 
-        Node<E> temp = head;
+        Node<E> deleted = head;
         head = head.next;
-        if (head != null) head.prev = null;
-        else tail = null;
+        if (head == null) tail = null;
+        else head.prev = null;
 
-        return temp.data;
+        return deleted.data;
     }
 
     public void deleteNode(Node<E> node){
         if (node == null) return;
 
-        if (node == head) popFront();
+        if (node == head) popFirst();
         else if (node == tail) popBack();
         else {
             node.prev.next = node.next;
@@ -108,27 +119,28 @@ class CacheList<E> extends AbstractDoublyLinkedList<E>{
     }
 
     public String toString(){
-        StringBuilder str = new StringBuilder("[");
-        Node<E> iterator = head;
-        while(iterator != null){
-            str.append("< " + iterator.key + ", " + iterator.data + " >, ");
-            iterator = iterator.next;
+        StringBuilder sb = new StringBuilder("[");
+        Node<E> current = head;
+
+        while (current != null){
+            sb.append("<" + current.key + ", " + current.data + ">");
+            current = current.next;
         }
-        str.append("]");
-        return str.toString();
+
+        sb.append("]");
+        return sb.toString();
     }
 }
 
-// キャッシュを実装するためのコンテナ
+// deleteNodeでリストの真ん中のデータを削除する際、O(n)になる。
+// 任意のノードにO(1)でアクセスするためにハッシュマップを使用。（空間計算量とのトレードオフ）
 class LRUCache<E>{
-    protected int capacity;
-    protected Map<Integer, Node<E>> cacheMap;
-    protected CacheList<E> cacheList;
+    private int capacity;
+    public Map<Integer, Node<E>> cacheMap = new HashMap<>();
+    private CacheList<E> cacheList = new CacheList<>();
 
     public LRUCache(int capacity){
         this.capacity = capacity;
-        this.cacheMap = new HashMap<Integer, Node<E>>();  // キーとノードをハッシュマップに格納
-        this.cacheList = new CacheList<E>();  // 両方向リスト（先頭: 古い要素, 末尾: 新しい要素）
     }
 
     public E get(int key){
@@ -136,8 +148,9 @@ class LRUCache<E>{
 
         Node<E> temp = cacheMap.get(key);
         cacheList.deleteNode(temp);
-        temp.prev = null;
         temp.next = null;
+        temp.prev = null;
+
         cacheList.pushBack(temp);
 
         return temp.data;
@@ -153,14 +166,24 @@ class LRUCache<E>{
             temp.next = null;
         } else if (cacheMap.size() == capacity){
             temp = cacheList.head;
-            cacheList.deleteNode(temp);
-            cacheMap.remove(temp.key);
-            temp = new Node<E>(key, data);
+            cacheList.popFirst();
+            cacheMap.remove(temp.key);  // removes the values for any particular key in the Map
+            temp = new Node(key, data);
+            cacheMap.put(key, temp);
         } else {
-            temp = new Node<E>(key, data);
+            temp = new Node(key, data);
             cacheMap.put(key, temp);
         }
 
         cacheList.pushBack(temp);
     }
+
+    public String toString(){
+        return cacheList.toString();
+    }
 }
+
+
+
+
+
