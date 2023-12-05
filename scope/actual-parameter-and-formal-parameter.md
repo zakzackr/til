@@ -1,4 +1,4 @@
-# What are 'Actual Parameter' and 'Formal Parameter'
+## What are Actual Parameter and Formal Parameter
 ```
 public static int add(int x,int y){  // Formal Parameter（仮引数）
    return x + y;
