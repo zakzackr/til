@@ -1,5 +1,6 @@
 // In this example, variables (firstName/lastName) are defined in 3 different scopes
 
+// Defining the Main class in the global scope
 public class Main{
 
     public static String firstName = "Masamune";
