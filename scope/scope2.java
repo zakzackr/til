@@ -34,6 +34,7 @@ class Main{
 
         System.out.println(A.B.x); // 15
 
+        int y = 1000; // A.B.multiply(2) will find y in the parent scope (y = 10), so this y will not be used
         System.out.println(A.B.multiply(2)); // 20
     }
 }
