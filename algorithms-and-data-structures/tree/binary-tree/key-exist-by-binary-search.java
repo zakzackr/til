@@ -23,10 +23,13 @@ public class Main {
         if (bst == null) return false;
         if (key == bst.data) return true;
 
-        bst = (key < bst.data)? bst.left: bst.right;
-        return keyExist(key, bst);
+//        bst = (key < bst.data)? bst.left: bst.right;
+//        return keyExist(key, bst);
+        
+        if (key < bst.data) return keyExist(key, bst.left);
+        else return keyExist(key, bst.right);
     }
-    
+
     public static void main(String[] args) {
         int[] sortedArr = new int[]{1,2,3,4,5,6,7,8,9,10,11};
         BinaryTree balancedBST = sortedArrayToBST(sortedArr);
