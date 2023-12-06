@@ -1,4 +1,5 @@
 public class Main {
+    // 分割統治法
     public static BinaryTree sortedArrayToBSTHelper(int[] arr, int start, int end){
         if (start == end) return new BinaryTree(arr[start]);
 
