@@ -59,7 +59,7 @@ class BinarySearchTree{
 
         BinaryTree left = null;
         BinaryTree right = null;
-        if (start < mid) left = sortedArrToBST(sortedArr, 0, mid - 1);
+        if (start < mid) left = sortedArrToBST(sortedArr, start, mid - 1);
         if (mid < end) right = sortedArrToBST(sortedArr, mid + 1, end);
 
         BinaryTree root = new BinaryTree(sortedArr[mid], left, right);
