@@ -1,3 +1,5 @@
+// black-box testing: プログラムの内部コンポーネントを考慮しないテスト方法。プログラムの全体的な入力と出力にのみ焦点を当てる。
+
 import java.util.ArrayList;
 
 class Main{
