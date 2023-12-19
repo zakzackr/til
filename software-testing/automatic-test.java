@@ -1,4 +1,5 @@
 // 自動テストを行う際にも、特定の分野での知識や情報が必要となる。今回のケースでは、kとnなどの情報が必要となる。
+// Assertion.run(formatDecimal(86.258) == 8626)のように8626などの数字を手入力するのではなく、スクリプトでテストを行う。
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
