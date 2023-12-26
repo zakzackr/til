@@ -16,7 +16,7 @@ public class Main {
             arr[0]++;  // アクセス先が配列など参照の場合は変更できる
         });
 
-        System.out.println(arr[0]);
+        System.out.println(arr[0]);  // -> 5
     }
 }
 ```
