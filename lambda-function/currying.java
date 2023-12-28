@@ -8,7 +8,7 @@ public class Main {
         // 引数を二つ持つラムダ
         BiFunction<Integer, Integer, Integer> addFn = (x, y) -> x + y;
 
-        // カリー化
+        // カリー化を用いることで、一部の引数を固定した新たな関数を生成することができる
         // 引数を一つ持つ二つのラムダを使用してカリー化
         Function<Integer, Function<Integer, Integer>> addCurry = x -> y -> x + y;
 
