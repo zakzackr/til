@@ -9,11 +9,10 @@ public class Main {
         BiFunction<String, Double, Function<Integer, Integer>> taxLambda = (state, stateTax) -> {
 
             Function<Integer, Integer> func = income -> {
-                // stateの状態も
                 // クロージャはそれが定義されたスコープにある変数（state）を覚えており、そのスコープが消えた後でもそれら変数にアクセスすることができる。
                 // func関数が状態を保持する
                 System.out.println("applying tax in " + state + " to income " + income);
-                // スコープ外のfinalの変数にはアクセス/変更、どちらも可能
+                // スコープ外のfinalの変数にはアクセス可能（effectively finalの変数にもアクセス可能）
                 double tax = federalTax + stateTax;
                 return (int)(income - income * tax);
             };
