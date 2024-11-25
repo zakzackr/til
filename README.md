@@ -11,5 +11,4 @@ This repository is a collection of what I learned today in the field of Computer
 * アルゴリズムとデータ構造
 * ラムダ関数
 * オブジェクト指向
-* スコープ
 * ソフトウェアテスト
